@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div class="min-h-screen flex flex-col items-center bg-gradient-to-r from-blue-100 to-blue-300 p-6">
+  <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-8">
+      <p class="text-lg font-medium text-gray-700">Price per ticket: <span class="text-blue-600">₹{{ ticketPrice }}</span></p>
+  </div>
+
+  <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Select Seats</h2>
+    <div class="grid grid-cols-5 gap-3">
+      <div
+        *ngFor="let seat of seatLayout"
+        class="w-12 h-12 flex items-center justify-center rounded-full text-sm font-medium cursor-pointer transition-transform duration-300"
+        [ngClass]="{
+          'bg-green-500 text-white': selectedSeats.includes(seat),
+          'bg-red-500 text-white cursor-not-allowed': bookedSeats.includes(seat),
+          'bg-gray-200 hover:bg-green-300': !selectedSeats.includes(seat) && !bookedSeats.includes(seat)
+        }"
+        (click)="toggleSeatSelection(seat)"
+      >
+        {{ seat }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Summary -->
+  <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Booking Summary</h2>
+    <p class="text-lg font-medium text-gray-700">Selected Seats: 
+      <span class="font-bold text-blue-600">{{ selectedSeats.join(', ') || 'None' }}</span>
+    </p>
+    <p class="text-lg font-medium text-gray-700">Total Price: 
+      <span class="font-bold text-blue-600">₹{{ totalPrice }}</span>
+      <div class="min-h-36 flex flex-col items-center bg-gradient-to-r from-blue-100 to-blue-300 p-6">
+        <!-- Payment Details -->
+        <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-8">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-6">Payment Summary</h2>
+          <p class="text-lg font-medium text-gray-700">Selected Seats: 
+            <span class="font-bold text-blue-600">{{ selectedSeats.join(', ') || 'None' }}</span>
+          </p>
+          <p class="text-lg font-medium text-gray-700">Total Price: 
+            <span class="font-bold text-blue-600">₹{{ totalPrice }}</span>
+          </p>
+          <button
+          class="mt-6 w-full py-3 bg-blue-600 text-white rounded-md shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-300"
+          [disabled]="selectedSeats.length === 0"
+          (click)="confirmBooking()"
+        >
+          Confirm Booking
+        </button>
+        </div>
+      </div>    
+</div>

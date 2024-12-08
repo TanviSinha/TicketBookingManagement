@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Design</title>
+</head>
+<body class="bg-gray-100">
+
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between flex-wrap gap-4 sm:gap-6">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a (click)="reloadHome()" class="text-2xl font-semibold text-gray-900 hover:text-blue-600 cursor-pointer">
+          <img src="../assets/images/logo.png" alt="Logo" class="h-16 sm:h-20 w-36 sm:w-48" />
+        </a>
+      </div>
+
+      <!-- Search Input -->
+      <div class="w-full sm:w-auto mt-1 sm:mt-0 flex justify-center sm:justify-start">
+        <input
+          type="text"
+          placeholder="Search for  movies"
+          [(ngModel)]="searchQuery"
+          (input)="onSearchInput()"
+          class="w-full sm:w-96 px-6 py-3 border rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 text-lg"
+          style="max-width: 100%; transition: all 0.3s ease;" >
+      </div>
+
+      <!-- Location Selector (visible on all screens) -->
+      <div class="mt-2 sm:mt-0 w-full sm:w-auto">
+        <button class="w-full sm:w-auto px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium">
+          Ranchi
+        </button>
+      </div>
+
+      <!-- Mobile Navbar: Login, Feedback, History -->
+      <div class="w-full sm:w-auto flex sm:hidden mt-2 sm:mt-0 space-x-2">
+        <button
+          (click)="navigateToHistory()"
+          class="w-full sm:w-auto px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium"
+        >
+          User History
+        </button>
+        <button
+          (click)="navigateToFeedback()"
+          class="w-full sm:w-auto px-6 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white text-lg font-medium"
+        >
+          Give Feedback
+        </button>
+        <button
+          (click)="redirectToLogin()"
+          class="w-full sm:w-auto px-6 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white text-lg font-medium"
+        >
+          Login
+        </button>
+      </div>
+
+      <!-- Desktop Navbar: Login, Feedback, History (hidden on small screens) -->
+      <div class="hidden sm:flex sm:space-x-4 mt-2 sm:mt-0">
+        <button
+          (click)="navigateToHistory()"
+          class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium"
+        >
+          User History
+        </button>
+        <button
+          (click)="navigateToFeedback()"
+          class="px-6 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white text-lg font-medium"
+        >
+          Give Feedback
+        </button>
+        <button
+          (click)="redirectToLogin()"
+          class="px-6 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white text-lg font-medium"
+        >
+          Login
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+</body>
+</html>

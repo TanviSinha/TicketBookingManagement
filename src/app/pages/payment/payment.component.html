@@ -1,0 +1,20 @@
+<app-header></app-header>
+<div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8">
+  <!-- Ticket Booked Message -->
+  <div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-6 mb-8">
+    <h2 class="text-3xl font-semibold text-center text-indigo-600 mb-4">Ticket Booked</h2>
+    <p class="text-lg text-gray-700 text-center">Your seats have been successfully booked! You're all set.</p>
+    <p class="mt-4 text-xl font-semibold text-gray-800 text-center">
+      Total Price: <span class="text-indigo-600">₹{{ totalPrice }}</span>
+    </p>
+    <div class="mt-6 text-center">
+      <button
+        class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+        (click)="proceedToPayment()"
+      >
+        Pay Now
+      </button>
+    </div>
+  </div>
+</div>
+

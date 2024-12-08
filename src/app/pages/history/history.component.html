@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="min-h-screen flex flex-col items-center bg-gradient-to-r from-blue-100 to-blue-300 p-6">
+  <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 mb-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Booking History</h2>
+    
+    <!-- Display user history if available -->
+    <div *ngIf="userHistory.length > 0; else noHistory">
+      <ul class="space-y-4">
+        <li *ngFor="let item of userHistory" class="p-4 bg-gray-100 rounded-md shadow-md">
+          <h3 class="text-lg font-semibold text-gray-700">Booking ID: {{ item.id }}</h3>
+          <p class="text-sm text-gray-500">{{ item.title }}</p>
+          <p class="text-sm text-gray-500">Date: {{ item.date }}</p>
+          <p class="text-sm text-gray-500">Seats: {{ item.seat }}</p>
+          <p class="text-sm text-gray-500">Total Price: <strong>{{ item.totalPrice }}</strong></p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- No history found message -->
+    <ng-template #noHistory>
+      <p class="text-gray-500">No booking history found for this user.</p>
+    </ng-template>
+  </div>
+</div>

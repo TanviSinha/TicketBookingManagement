@@ -1,0 +1,69 @@
+<div class="p-6 bg-white shadow-lg rounded-md">
+  <h2 class="text-2xl font-semibold mb-4">Cinema Hall Management</h2>
+
+  <!-- Add Cinema Hall Form -->
+  <div class="space-y-4 mb-6">
+    <input 
+      type="text" 
+      class="w-full p-3 border border-gray-300 rounded-md"
+      placeholder="Cinema Hall Name"
+      [(ngModel)]="newCinemaHall.name"
+    />
+    <input 
+      type="text" 
+      class="w-full p-3 border border-gray-300 rounded-md"
+      placeholder="Movie Id"
+      [(ngModel)]="newCinemaHall.movie"
+    />
+    <input 
+      type="text" 
+      class="w-full p-3 border border-gray-300 rounded-md"
+      placeholder="Location"
+      [(ngModel)]="newCinemaHall.location"
+    />
+
+    <!-- Time Slot Input -->
+    <div class="space-y-2">
+      <input 
+        type="text" 
+        class="w-full p-3 border border-gray-300 rounded-md"
+        placeholder="Enter Time Slot (e.g., 10:00 AM)"
+        [(ngModel)]="newCinemaHall.timeSlots[0]"
+      />
+      <button
+        class="mt-2 py-2 px-4 bg-green-600 text-white rounded-md"
+        (click)="newCinemaHall.timeSlots.push('')"
+      >
+        Add Another Time Slot
+      </button>
+    </div>
+
+    <button 
+      class="w-full py-3 bg-blue-600 text-white rounded-md mt-4"
+      (click)="addCinemaHall()"
+    >
+      Add Cinema Hall
+    </button>
+  </div>
+
+  <!-- Cinema Halls List -->
+  <div *ngIf="cinemaHalls.length > 0">
+    <h3 class="text-xl font-semibold mb-3">Existing Cinema Halls</h3>
+    <div *ngFor="let cinemaHall of cinemaHalls; let i = index" class="mb-4 p-4 border border-gray-200 rounded-md">
+      <div class="font-bold">{{ cinemaHall.name }}</div>
+      <div class="text-sm">Movie: {{ cinemaHall.movie }}</div>
+      <div class="text-sm">Location: {{ cinemaHall.location }}</div>
+      <div class="text-sm">Time Slots: 
+        <ul>
+          <li *ngFor="let time of cinemaHall.timeSlots">{{ time }}</li>
+        </ul>
+      </div>
+      <button
+        class="mt-2 py-2 px-4 bg-red-600 text-white rounded-md"
+        (click)="removeCinemaHall(i)"
+      >
+        Remove
+      </button>
+    </div>
+  </div>
+</div>

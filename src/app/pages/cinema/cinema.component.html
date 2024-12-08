@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <app-header></app-header>
+<!-- <div *ngFor="let cinema of cinemas" class="mt-4 p-4 border rounded-lg shadow-md ml-4 mr-4">
+  <h3 class="text-4xl font-bold">{{ cinema.name }}</h3>
+    <h5 class="text-xl text-gray-600 ml-2">{{ cinema.location }}</h5>
+    <div class="mt-2">
+      <h4 class="font-semibold text-2xl ">Available Time Slots:</h4>
+      <ul class="flex flex-wrap gap-4 mt-2">
+        <li 
+          *ngFor="let slot of cinema.timeSlots" 
+          class="mr-4 px-4 text-lg py-2 w-96 bg-gray-200 rounded-lg cursor-pointer hover:bg-gray-300 flex items-center justify-between"
+        >
+          <span>{{ slot }}</span>
+          <button 
+            class="w-28 px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            (click)="bookSlot(cinema.id, slot)"
+            >Book
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>    -->
+  <!-- <div *ngIf="cinemas.length > 0">
+    <h2>Cinemas Showing This Movie</h2>
+    <div *ngFor="let cinema of cinemas">
+      <div class="cinema-card">
+        <h3>{{ cinema.name }}</h3>
+        <p>{{ cinema.location }}</p>
+        <p><strong>Time Slots:</strong></p>
+        <ul>
+          <li *ngFor="let timeSlot of cinema.timeSlots">{{ timeSlot }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="cinemas.length === 0">
+    <p>No cinemas found for this movie.</p>
+  </div>
+  
+</body>
+</html>  -->
+<div class="space-y-6 p-6">
+  <div *ngFor="let hall of cinemaHalls" class="bg-gray-100 p-4 rounded shadow">
+    <h3 class="text-lg font-bold">{{ hall.name }}</h3>
+    <p class="text-sm text-gray-600">{{ hall.location }}</p>
+    <div class="flex gap-4 mt-4">
+      <button
+        *ngFor="let timeSlot of hall.timeSlots"
+        (click)="goToSeatBooking(hall.id, timeSlot)"
+        class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+      >
+        {{ timeSlot }}
+      </button>
+    </div>
+  </div>
+</div>
